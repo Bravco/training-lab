@@ -12,8 +12,8 @@ const router = createRouter({
       path: "/app",
       name: "app",
       component: () => import("../views/App.vue"),
-    }
-  ]
+    },
+  ],
 })
 
 export default router
