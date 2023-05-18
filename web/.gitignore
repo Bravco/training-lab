@@ -28,4 +28,4 @@ coverage
 *.sw?
 
 # Firebase data
-./firebase/index.js
+./firebase
