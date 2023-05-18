@@ -11,14 +11,14 @@ html {
 
     --color-primary: #4791FF;
     --color-primary-alt: #5A6BFF50;
-    --color-60: white;
-    --color-30: #EEEEEE;
+    --color-60: #1C232D;
+    --color-30: #262F3C;
     --color-red: #ff551c;
     --color-green: #42ee76;
     --color-blue: #4589ff;
 
-    --color-text: black;
-    --color-text-alt: rgba(0, 0, 0, 0.5);
+    --color-text: white;
+    --color-text-alt: rgba(255, 255, 255, 0.5);
 
     --box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
 
