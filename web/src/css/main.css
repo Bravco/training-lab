@@ -9,10 +9,13 @@
 html {
     --font-family-outfit: 'Outfit', sans-serif;
 
-    --color-primary: #5A6BFF;
+    --color-primary: #4791FF;
     --color-primary-alt: #5A6BFF50;
     --color-60: white;
     --color-30: #EEEEEE;
+    --color-red: #ff551c;
+    --color-green: #42ee76;
+    --color-blue: #4589ff;
 
     --color-text: black;
     --color-text-alt: rgba(0, 0, 0, 0.5);

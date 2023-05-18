@@ -9,13 +9,12 @@
                 <li>
                     <div>
                         <p class="label">Logged as</p>
-                        <p>email</p>
+                        <p>{{ getAuth().currentUser.email }}</p>
                     </div>
-                    <p class="plan-type">Free</p>
                 </li>
                 <hr>
                 <li style="color: var(--color-primary)">
-                    <font-awesome-icon icon="fa-solid fa-cow"/>
+                    <font-awesome-icon icon="fa-solid fa-dumbbell"/>
                     <RouterLink to="/app" style="color: var(--color-primary)">Go to app →</RouterLink>
                 </li>
                 <li>
@@ -29,20 +28,25 @@
 </template>
 
 <script setup>
-    import { ref } from "vue";
+    import { getAuth } from "firebase/auth";
     import router from "../router";
     import Logo from "../components/Logo.vue";
     import Button from "../components/Button.vue";
 
-    const isLoggedIn = ref(false);
+    const props = defineProps({
+        isLoggedIn: {
+            type: Boolean,
+            required: true,
+        },
+        handleSignOut: {
+            type: Function,
+            default: () => {},
+        },
+    });
 
     function navigateToAuth() {
         router.push("/auth");
     };
-
-    function handleSignOut() {
-        isLoggedIn.value = false;
-    }
 
     function toggleDropdown() {
         document.getElementById("dropdown").classList.toggle("show");
@@ -140,12 +144,5 @@
     .label {
         color: var(--color-text-alt);
         font-size: .8em;
-    }
-
-    .plan-type {
-        padding: .2em .75em;
-        border-radius: 1em;
-        text-align: center;
-        background-color: var(--color-primary-alt);
     }
 </style>
