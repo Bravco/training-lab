@@ -28,4 +28,4 @@ coverage
 *.sw?
 
 # Firebase data
-./firebase
+firebase
