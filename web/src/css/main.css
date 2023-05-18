@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    --font-family-outfit: 'Outfit', sans-serif;
+
+    --color-primary: #5A6BFF;
+    --color-primary-alt: #5A6BFF50;
+    --color-60: white;
+    --color-30: #EEEEEE;
+
+    --color-text: black;
+    --color-text-alt: rgba(0, 0, 0, 0.5);
+
+    --box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family-roboto);
+    background-color: var(--color-60);
+    color: var(--color-text);
+    accent-color: var(--color-primary);
+}
+
+section {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+}
+
+ul {
+    list-style: none;
+}
+
+hr {
+    border-color: rgba(0, 0, 0, .1);
+}
+
+a, button {
+    color: var(--color-text);
+    text-decoration: none;
+    cursor: pointer;
+    transition: filter 300ms;
+}
+
+a:hover, button:hover {
+    filter: opacity(50%);
+}
