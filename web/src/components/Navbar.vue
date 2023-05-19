@@ -62,23 +62,9 @@
             }
         }
     });
-
-    window.addEventListener("scroll", function() {
-        let navbar = this.document.getElementById("navbar")
-        
-        if (this.document.body.scrollTop >= 200 || this.document.documentElement.scrollTop >= 200) {
-            navbar.classList.add("navbar-colored");
-        } else {
-            navbar.classList.remove("navbar-colored");
-        }
-    });
 </script>
 
 <style scoped>
-    .navbar-colored {
-        background-color: var(--color-60);
-    }
-
     .navbar {
         height: 4em;
         position: fixed;
@@ -89,7 +75,7 @@
         align-items: center;
         width: 100%;
         padding: .5em 8%;
-        backdrop-filter: blur(1em);
+        /*backdrop-filter: blur(1em);*/
         transition: background-color 300ms;
         z-index: 100;
     }

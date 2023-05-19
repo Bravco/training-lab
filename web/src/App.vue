@@ -1,5 +1,6 @@
 <template>
-  <Navbar :is-logged-in="isLoggedIn" :handle-sign-out="handleSignOut"/>
+  <Sidebar v-if="router.currentRoute.value.name == 'app'"/>
+  <Navbar v-else :is-logged-in="isLoggedIn" :handle-sign-out="handleSignOut"/>
   <RouterView/>
 </template>
 
@@ -9,6 +10,7 @@
   import { RouterView } from "vue-router";
   import router from "./router";
   import Navbar from "./components/Navbar.vue";
+  import Sidebar from "./components/Sidebar.vue";
 
   const isLoggedIn = ref(false);
 

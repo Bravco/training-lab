@@ -1,6 +1,7 @@
 <template>
     <RouterLink to="/" class="logo">
-        <p>Training Lab</p>
+        <font-awesome-icon icon="fa-solid fa-dumbbell"/>
+        <span>Training Lab</span>
     </RouterLink>
 </template>
 
@@ -9,16 +10,17 @@
         display: flex;
         align-items: center;
         gap: .5em;
+        font-size: 2em;
     }
 
     .logo:hover {
         filter: opacity(100%);
     }
 
-    .logo p {
+    .logo span {
         color: var(--color-text);
         font-family: var(--font-family-outfit);
-        font-size: 1.5em;
-        font-weight: bold;
+        font-size: .75em;
+        font-weight: 600;
     }
 </style>

@@ -6,9 +6,9 @@ import { VueFire, VueFireAuth } from "vuefire";
 
 import {FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faUser, faCircleUser, faDumbbell, faMoon, faMoneyBillWave, faSignOutAlt, faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { faUser, faCircleUser, faDumbbell, faMoon, faMoneyBillWave, faSignOutAlt, faEye, faEyeSlash, faCube } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faUser, faCircleUser, faDumbbell, faMoon, faMoneyBillWave, faSignOutAlt, faEye, faEyeSlash);
+library.add(faUser, faCircleUser, faDumbbell, faMoon, faMoneyBillWave, faSignOutAlt, faEye, faEyeSlash, faCube);
 
 const app = createApp(App);
 

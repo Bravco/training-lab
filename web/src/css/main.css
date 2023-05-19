@@ -26,7 +26,7 @@ html {
 }
 
 body {
-    font-family: var(--font-family-roboto);
+    font-family: var(--font-family-outfit);
     background-color: var(--color-60);
     color: var(--color-text);
     accent-color: var(--color-primary);
@@ -43,7 +43,7 @@ ul {
 }
 
 hr {
-    border-color: rgba(0, 0, 0, .1);
+    border-color: rgba(255, 255, 255, .1);
 }
 
 a, button {
