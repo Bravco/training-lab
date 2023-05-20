@@ -6,7 +6,6 @@
     background-color: var(--color-30);
     box-shadow: var(--box-shadow);
     border-radius: 1em;
-    font-family: var(--font-family-outfit);
 }
 
 .subtitle, .btn-wrapper, label  {
@@ -48,9 +47,10 @@ input {
     padding: .8em;
     border: 1px solid #DEDEDE;
     border-radius: .5em;
-    font-family: var(--font-family-roboto);
     font-size: 1em;
     outline: none;
+    background-color: transparent;
+    color: var(--color-text);
     transition: border-color 300ms;
 }
 
@@ -65,7 +65,6 @@ button {
     background-color: var(--color-primary);
     color: white;
     border: none;
-    font-family: var(--font-family-outfit);
     font-size: 1em;
     font-weight: 600;
     text-transform: uppercase;

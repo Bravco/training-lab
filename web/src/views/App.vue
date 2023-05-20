@@ -5,19 +5,16 @@
     :select-page-index="selectPageIndex"
   />
   <section id="app">
-    
+    <h1>{{ pages[selectedPageIndex].title }}</h1>
+    <hr>
+    <Dashboard/>
   </section>
 </template>
-
-<style scoped>
-  section {
-    margin-left: 6em;
-  }
-</style>
 
 <script setup>
   import { ref } from 'vue';
   import Sidebar from "../components/Sidebar.vue";
+  import Dashboard from "../components/app/Dashboard.vue";
 
   const pages = [
     { title: "Dashboard", icon: "fa-cube", },
@@ -30,3 +27,14 @@
     selectedPageIndex.value = index;
   }
 </script>
+
+<style scoped>
+  section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2em;
+    margin-left: 6em;
+    padding: 2em;
+  }
+</style>

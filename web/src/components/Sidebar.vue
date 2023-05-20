@@ -71,8 +71,10 @@
         padding: 2em 1.2em;
         overflow: hidden;
         background-color: var(--color-30);
+        box-shadow: var(--box-shadow);
         transition-property: width, padding;
         transition-duration: 300ms;
+        z-index: 100;
     }
 
     .nav:hover {
