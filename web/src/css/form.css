@@ -3,7 +3,7 @@
     display: grid;
     gap: 2.5em;
     padding: 4em 3em;
-    background-color: var(--color-60);
+    background-color: var(--color-30);
     box-shadow: var(--box-shadow);
     border-radius: 1em;
     font-family: var(--font-family-outfit);

@@ -2,6 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { getFirestore, collection, doc } from "firebase/firestore";
 import { firebaseConfig } from "./config.js";
+import router from "../router";
 
 export const firebaseApp = initializeApp(firebaseConfig);
 
@@ -16,3 +17,9 @@ onAuthStateChanged(getAuth(), user => {
         userDoc = doc(usersCollection, user.uid);
     }
 });
+
+export function logout() {
+    signOut(auth).then(() => {
+        router.push("/auth");
+    });
+}

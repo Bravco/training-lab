@@ -29,6 +29,7 @@
 
 <script setup>
     import { getAuth } from "firebase/auth";
+    import { logout } from "../firebase/index.js"
     import router from "../router";
     import Logo from "../components/Logo.vue";
     import Button from "../components/Button.vue";
@@ -37,10 +38,6 @@
         isLoggedIn: {
             type: Boolean,
             required: true,
-        },
-        logout: {
-            type: Function,
-            default: () => {},
         },
     });
 

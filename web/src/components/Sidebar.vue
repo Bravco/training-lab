@@ -38,6 +38,7 @@
 
 <script setup>
     import { getAuth } from 'firebase/auth';
+    import { logout } from '../firebase';
 
     const props = defineProps({
         pages: {
@@ -49,10 +50,6 @@
             default: 0,
         },
         selectPage: {
-            type: Function,
-            default: () => {},
-        },
-        logout: {
             type: Function,
             default: () => {},
         },
