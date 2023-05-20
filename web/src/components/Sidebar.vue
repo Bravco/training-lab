@@ -1,39 +1,44 @@
 <template>
-    <nav class="nav">
-        <ul class="nav-list">
-            <li class="logo">
-                <RouterLink to="/" class="nav-link">
-                    <font-awesome-icon icon="fa-solid fa-dumbbell"/>
-                    <span>Training Lab</span>
-                </RouterLink>
-            </li>
-            <hr>
-            <li v-for="(page, index) in pages" :key="index" class="nav-item">
-                <a :class="['nav-link', { 'active': selectedPageIndex == index }]" @click.prevent="selectPageIndex(index)">
-                    <font-awesome-icon :icon="'fa-solid ' + page.icon"/>
-                    <span>{{ page.title }}</span>
-                </a>
-            </li>
-            <ul class="bottom">
-                <li class="nav-item">
-                    <a class="nav-link" @click.prevent="logout">
-                        <font-awesome-icon icon="fa-solid fa-sign-out-alt"/>
-                        <span>Logout</span>
-                    </a>
+    <div class="event-catcher">
+        <a @click.prevent="toggleActive" class="toggle-btn">
+            <font-awesome-icon icon="fa-solid fa-angle-right"/>
+        </a>
+        <nav id="nav" class="nav">
+            <ul class="nav-list">
+                <li class="logo">
+                    <RouterLink to="/" class="nav-link">
+                        <font-awesome-icon icon="fa-solid fa-dumbbell"/>
+                        <span>Training Lab</span>
+                    </RouterLink>
                 </li>
                 <hr>
-                <li class="account">
-                    <p class="nav-link" href="">
-                        <font-awesome-icon icon="fa-solid fa-circle-user" size="lg"/>
-                        <span>
-                            <p>Logged as</p>
-                            <p class="email">{{ getAuth().currentUser.email }}</p>
-                        </span>
-                    </p>
+                <li v-for="(page, index) in pages" :key="index" class="nav-item">
+                    <a :class="['nav-link', { 'active': selectedPageIndex == index }]" @click.prevent="selectPageIndex(index)">
+                        <font-awesome-icon :icon="'fa-solid ' + page.icon"/>
+                        <span>{{ page.title }}</span>
+                    </a>
                 </li>
+                <ul class="bottom">
+                    <li class="nav-item">
+                        <a class="nav-link" @click.prevent="logout">
+                            <font-awesome-icon icon="fa-solid fa-sign-out-alt"/>
+                            <span>Logout</span>
+                        </a>
+                    </li>
+                    <hr>
+                    <li class="account">
+                        <p class="nav-link" href="">
+                            <font-awesome-icon icon="fa-solid fa-circle-user" size="lg"/>
+                            <span>
+                                <p>Logged as</p>
+                                <p class="email">{{ getAuth().currentUser.email }}</p>
+                            </span>
+                        </p>
+                    </li>
+                </ul>
             </ul>
-        </ul>
-    </nav>
+        </nav>
+    </div>
 </template>
 
 <script setup>
@@ -53,6 +58,32 @@
             type: Function,
             default: () => {},
         },
+    });
+
+    function toggleActive() {
+        const nav = document.getElementById("nav");
+        const toggleBtn = document.querySelector(".toggle-btn");
+        nav.classList.toggle("active");
+        toggleBtn.classList.toggle("active");
+    }
+
+    window.addEventListener("click", function(event) {
+        if (!event.target.closest(".event-catcher")) {
+            const nav = document.getElementById("nav");
+            const toggleBtn = document.querySelector(".toggle-btn");
+
+            if (nav) {
+                if (nav.classList.contains("active")) {
+                    nav.classList.remove("active");
+                }
+            }
+
+            if (toggleBtn) {
+                if (toggleBtn.classList.contains("active")) {
+                    toggleBtn.classList.remove("active");
+                }
+            }
+        }
     });
 </script>
 
@@ -77,17 +108,43 @@
         z-index: 100;
     }
 
-    .nav:hover {
+    .nav.active {
         width: 18em;
         padding: 2em 1.7em;
     }
 
-    .nav:hover span {
+    .nav.active span {
         transform: none;
     }
 
-    .nav:hover .nav-item .nav-link {
+    .nav.active .nav-item .nav-link {
         padding: 1em 1.6em;
+    }
+
+    .toggle-btn {
+        width: 2em;
+        height: 2em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 2em;
+        left: 5em;
+        border-radius: 100%;
+        background-color: var(--color-primary);
+        z-index: 101;
+        transition-property: left, transform, background-color;
+        transition-duration: 300ms;
+    }
+
+    .toggle-btn.active {
+        left: 17em;
+        background-color: var(--color-30);
+        transform: rotate(-180deg);
+    }
+
+    .toggle-btn:hover {
+        filter: none;
     }
 
     .nav-list, .bottom {
