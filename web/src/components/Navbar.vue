@@ -105,7 +105,7 @@
         font-family: var(--font-family-outfit);
         font-size: 1.1em;
         font-weight: 500;
-        background-color: var(--color-60);
+        background-color: var(--color-30);
         border-radius: 1em;
         box-shadow: var(--box-shadow);
         min-width: 16em;
