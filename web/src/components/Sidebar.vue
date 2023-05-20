@@ -22,20 +22,20 @@
             </li>
             <ul class="bottom">
                 <li class="nav-item">
-                    <a class="nav-link" href="">
+                    <a class="nav-link" @click.prevent="logout">
                         <font-awesome-icon icon="fa-solid fa-sign-out-alt"/>
                         <span>Logout</span>
                     </a>
                 </li>
                 <hr>
                 <li class="account">
-                    <a class="nav-link" href="">
+                    <p class="nav-link" href="">
                         <font-awesome-icon icon="fa-solid fa-circle-user" size="lg"/>
                         <span>
                             <p>Logged as</p>
                             <p class="email">{{ getAuth().currentUser.email }}</p>
                         </span>
-                    </a>
+                    </p>
                 </li>
             </ul>
         </ul>
@@ -44,6 +44,13 @@
 
 <script setup>
     import { getAuth } from 'firebase/auth';
+
+    const props = defineProps({
+        logout: {
+            type: Function,
+            default: () => {},
+        },
+    });
 </script>
 
 <style scoped>
@@ -123,6 +130,7 @@
 
     .account span :not(.email) {
         font-size: .75em;
+        color: var(--color-text-alt);
     }
 
     .nav-link {

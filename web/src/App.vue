@@ -1,6 +1,6 @@
 <template>
-  <Sidebar v-if="router.currentRoute.value.name == 'app'"/>
-  <Navbar v-else :is-logged-in="isLoggedIn" :handle-sign-out="handleSignOut"/>
+  <Sidebar v-if="router.currentRoute.value.name == 'app'" :logout="logout"/>
+  <Navbar v-else :is-logged-in="isLoggedIn" :logout="logout"/>
   <RouterView/>
 </template>
 
@@ -27,9 +27,9 @@
     });
   });
 
-  function handleSignOut() {
+  function logout() {
     signOut(auth).then(() => {
-      router.push("/");
+      router.push("/auth");
     });
   }
 </script>

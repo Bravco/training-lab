@@ -19,7 +19,7 @@
                 </li>
                 <li>
                     <font-awesome-icon icon="fa-solid fa-sign-out-alt"/>
-                    <a @click.prevent="handleSignOut">Logout</a>
+                    <a @click.prevent="logout">Logout</a>
                 </li>
             </ul>
         </div>
@@ -38,7 +38,7 @@
             type: Boolean,
             required: true,
         },
-        handleSignOut: {
+        logout: {
             type: Function,
             default: () => {},
         },
@@ -74,8 +74,8 @@
         justify-content: space-between;
         align-items: center;
         width: 100%;
-        padding: .5em 8%;
-        /*backdrop-filter: blur(1em);*/
+        padding: 2.85em 5%;
+        backdrop-filter: blur(1em);
         transition: background-color 300ms;
         z-index: 100;
     }
@@ -129,6 +129,6 @@
 
     .label {
         color: var(--color-text-alt);
-        font-size: .8em;
+        font-size: .75em;
     }
 </style>

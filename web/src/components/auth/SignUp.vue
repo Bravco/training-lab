@@ -99,6 +99,7 @@
             if (getAuth().currentUser) {
                 signOut(getAuth());
             }
+            
             createUserWithEmailAndPassword(getAuth(), state.email, state.password).then(() => {
                 router.push("/");
                 
