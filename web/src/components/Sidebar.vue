@@ -1,7 +1,7 @@
 <template>
     <nav class="nav">
         <ul class="nav-list">
-            <li class="nav-item">
+            <li class="logo">
                 <RouterLink to="/" class="nav-link">
                     <font-awesome-icon icon="fa-solid fa-dumbbell"/>
                     <span>Training Lab</span>
@@ -20,15 +20,31 @@
                     <span>Profile</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="">
-                    <font-awesome-icon icon="fa-solid fa-sign-out-alt"/>
-                    <span>Logout</span>
-                </a>
-            </li>
+            <ul class="bottom">
+                <li class="nav-item">
+                    <a class="nav-link" href="">
+                        <font-awesome-icon icon="fa-solid fa-sign-out-alt"/>
+                        <span>Logout</span>
+                    </a>
+                </li>
+                <hr>
+                <li class="account">
+                    <a class="nav-link" href="">
+                        <font-awesome-icon icon="fa-solid fa-circle-user" size="lg"/>
+                        <span>
+                            <p>Logged as</p>
+                            <p class="email">{{ getAuth().currentUser.email }}</p>
+                        </span>
+                    </a>
+                </li>
+            </ul>
         </ul>
     </nav>
 </template>
+
+<script setup>
+    import { getAuth } from 'firebase/auth';
+</script>
 
 <style scoped>
     span {
@@ -50,7 +66,7 @@
     }
 
     .nav:hover {
-        width: 16em;
+        width: 18em;
         padding: 2em 1.7em;
     }
 
@@ -58,36 +74,55 @@
         transform: none;
     }
 
-    .nav:hover .nav-item:not(:first-child) .nav-link {
+    .nav:hover .nav-item .nav-link {
         padding: 1em 1.6em;
     }
 
-    .nav-list {
+    .nav-list, .bottom {
         height: 100%;
         display: flex;
         flex-direction: column;
         gap: 2em;
     }
 
-    .nav-item:first-child {
+    .logo {
         font-size: 1.5em;
         font-weight: 600;
         margin-left: .6em;
     }
 
-    .nav-item:first-child .nav-link {
+    .logo .nav-link {
         gap: 1em;
     }
 
-    .nav-item:not(:first-child) .nav-link {
+    .nav-item .nav-link {
+        height: 3.5em;
         padding: 1em 1.3em;
         background-color: var(--color-60);
         border-radius: .5em;
         gap: 1.5em;
     }
 
-    .nav-item:last-child {
+    .bottom {
+        justify-content: flex-end;
         margin-top: auto;
+    }
+
+    .account {
+        margin-left: 1.2em;
+    }
+
+    .account .nav-link {
+        gap: 1em;
+    }
+
+    .account .email {
+        color: var(--color-primary);
+        font-weight: 600;
+    }
+
+    .account span :not(.email) {
+        font-size: .75em;
     }
 
     .nav-link {
