@@ -1,5 +1,11 @@
 <template>
-  <Sidebar v-if="router.currentRoute.value.name == 'app'" :logout="logout"/>
+  <Sidebar
+    v-if="router.currentRoute.value.name == 'app'"
+    :pages="pages"
+    :selected-page-index="selectedPageIndex"
+    :select-page="selectPage"
+    :logout="logout"
+  />
   <Navbar v-else :is-logged-in="isLoggedIn" :logout="logout"/>
   <RouterView/>
 </template>
@@ -12,7 +18,21 @@
   import Navbar from "./components/Navbar.vue";
   import Sidebar from "./components/Sidebar.vue";
 
+  const pages = [
+    {
+      index: 0,
+      title: "Dashboard",
+      icon: "fa-cube",
+    },
+    {
+      index: 1,
+      title: "Profile",
+      icon: "fa-user",
+    }
+  ];
+
   const isLoggedIn = ref(false);
+  const selectedPageIndex = ref(0)
 
   let auth;
 
@@ -26,6 +46,10 @@
       }
     });
   });
+
+  function selectPage(index) {
+    selectedPageIndex.value = index;
+  }
 
   function logout() {
     signOut(auth).then(() => {

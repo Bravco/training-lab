@@ -8,16 +8,10 @@
                 </RouterLink>
             </li>
             <hr>
-            <li class="nav-item">
-                <a class="nav-link active" href="">
-                    <font-awesome-icon icon="fa-solid fa-cube"/>
-                    <span>Dashboard</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="">
-                    <font-awesome-icon icon="fa-solid fa-user"/>
-                    <span>Profile</span>
+            <li v-for="page in pages" class="nav-item">
+                <a class="nav-link" :class="{ 'active': selectedPageIndex == page.index }" @click.prevent="selectPage(page.index)">
+                    <font-awesome-icon :icon="'fa-solid ' + page.icon"/>
+                    <span>{{ page.title }}</span>
                 </a>
             </li>
             <ul class="bottom">
@@ -46,6 +40,18 @@
     import { getAuth } from 'firebase/auth';
 
     const props = defineProps({
+        pages: {
+            type: Array,
+            default: [],
+        },
+        selectedPageIndex: {
+            type: Number,
+            default: 0,
+        },
+        selectPage: {
+            type: Function,
+            default: () => {},
+        },
         logout: {
             type: Function,
             default: () => {},
@@ -138,5 +144,9 @@
         align-items: center;
         transition-property: padding, filter;
         transition-duration: 300ms;
+    }
+
+    .nav-link.active {
+        color: var(--color-primary);
     }
 </style>
