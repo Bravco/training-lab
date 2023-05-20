@@ -2,7 +2,7 @@
   <Sidebar
     :pages="pages"
     :selected-page-index="selectedPageIndex"
-    :select-page="selectPage"
+    :select-page-index="selectPageIndex"
   />
   <section id="app">
     
@@ -20,13 +20,13 @@
   import Sidebar from "../components/Sidebar.vue";
 
   const pages = [
-    { index: 0, title: "Dashboard", icon: "fa-cube", },
-    { index: 1, title: "Profile", icon: "fa-user", }
+    { title: "Dashboard", icon: "fa-cube", },
+    { title: "Profile", icon: "fa-user", }
   ];
 
   const selectedPageIndex = ref(0)
 
-  function selectPage(index) {
+  function selectPageIndex(index) {
     selectedPageIndex.value = index;
   }
 </script>

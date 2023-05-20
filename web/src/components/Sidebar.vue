@@ -8,8 +8,8 @@
                 </RouterLink>
             </li>
             <hr>
-            <li v-for="page in pages" class="nav-item">
-                <a class="nav-link" :class="{ 'active': selectedPageIndex == page.index }" @click.prevent="selectPage(page.index)">
+            <li v-for="(page, index) in pages" :key="index" class="nav-item">
+                <a :class="['nav-link', { 'active': selectedPageIndex == index }]" @click.prevent="selectPageIndex(index)">
                     <font-awesome-icon :icon="'fa-solid ' + page.icon"/>
                     <span>{{ page.title }}</span>
                 </a>
@@ -49,7 +49,7 @@
             type: Number,
             default: 0,
         },
-        selectPage: {
+        selectPageIndex: {
             type: Function,
             default: () => {},
         },
