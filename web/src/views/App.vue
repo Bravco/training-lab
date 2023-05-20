@@ -7,7 +7,7 @@
   <section id="app">
     <h1>{{ pages[selectedPageIndex].title }}</h1>
     <hr>
-    <Dashboard/>
+    <Dashboard v-if="selectedPageIndex == 0"/>
   </section>
 </template>
 
