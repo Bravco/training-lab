@@ -10,7 +10,7 @@
         display: flex;
         align-items: center;
         gap: .5em;
-        font-size: 2em;
+        font-size: 1.5em;
     }
 
     .logo:hover {
@@ -20,7 +20,6 @@
     .logo span {
         color: var(--color-text);
         font-family: var(--font-family-outfit);
-        font-size: .75em;
         font-weight: 600;
     }
 </style>
