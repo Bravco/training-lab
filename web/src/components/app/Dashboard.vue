@@ -26,6 +26,11 @@
             </a>
         </div>
       </li>
+      <a class="plan-item">
+        <span class="new-plan-button">
+            <font-awesome-icon icon="fa-solid fa-plus" size="xl"/>
+        </span>
+      </a>
     </ul>
 </template>
 
@@ -46,6 +51,16 @@
         padding: 1.5em 2em 2.5em 2em;
         border-radius: 1em;
         background-color: var(--color-30);
+    }
+
+    .plan-item:last-child {
+        align-items: center;
+        justify-content: center;
+    }
+
+    .plan-item:last-child:hover .new-plan-button {
+        color: var(--color-primary);
+        border-color: var(--color-primary);
     }
 
     .plan-section {
@@ -85,19 +100,31 @@
         color: var(--color-text-alt);
     }
 
+    .button, .new-plan-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 100%;
+    }
+
     .button {
         background-color: var(--color-60);
         width: 2.5em;
         height: 2.5em;
         display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 100%;
         transition: background-color 300ms;
     }
 
     .button:hover {
         filter: none;
         background-color: var(--color-primary);
+    }
+
+    .new-plan-button {
+        width: 4em;
+        height: 4em;
+        border: 2px solid var(--color-text);
+        transition-property: color, border-color;
+        transition-duration:  300ms;
     }
 </style>
