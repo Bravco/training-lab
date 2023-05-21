@@ -1,15 +1,15 @@
 <template>
     <ul class="plan-list">
-      <li class="plan-item">
+      <li v-for="(plan, index) in plans" :key="index" class="plan-item">
         <div class="plan-section">
             <div class="indicators">
                 <span>
                     <font-awesome-icon icon="fa-solid fa-calendar-day"/>
-                    <p>4</p>
+                    <p>{{ plan.workouts.length }}</p>
                 </span>
                 <span>
                     <font-awesome-icon icon="fa-solid fa-bolt"/>
-                    <p>57</p>
+                    <p>{{ totalVolume(plan) }}</p>
                 </span>
             </div>
             <a class="button">
@@ -18,8 +18,8 @@
         </div>
         <div class="plan-section">
             <div class="text">
-                <p class="title">Title</p>
-                <p class="description">description</p>
+                <p class="title">{{ plan.title }}</p>
+                <p class="description">{{ plan.description }}</p>
             </div>
             <a class="button">
                 <font-awesome-icon icon="fa-solid fa-angle-right" size="lg"/>
@@ -33,6 +33,48 @@
       </a>
     </ul>
 </template>
+
+<script setup>
+    const plans = [
+        {
+            title: "My plan",
+            description: "Description for my plan",
+            workouts: [
+                {
+                    title: "My workout",
+                    exercises: [
+                        { title: "My exercise", volume: 5 },
+                        { title: "Other exercise", volume: 4 },
+                        { title: "Dummy exercise", volume: 3 },
+                        { title: "Hard exercise", volume: 6 },
+                    ],
+                },
+                { title: "Rest day" },
+                {
+                    title: "Serious workout",
+                    exercises: [
+                        { title: "Serious exercise", volume: 5 },
+                        { title: "Other exercise", volume: 4 },
+                        { title: "Hard exercise", volume: 6 },
+                    ],
+                },
+                { title: "2nd rest day" },
+            ],
+        },
+    ];
+
+    function totalVolume(plan) {
+        let totalVolume = 0;
+        plan.workouts.map(workout => {
+            if (workout.exercises) {
+                workout.exercises.map(exercise => {
+                    totalVolume += exercise.volume;
+                });
+            }
+        });
+        return totalVolume;
+    }
+</script>
 
 <style scoped>
     .plan-list {
