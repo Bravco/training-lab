@@ -10,7 +10,7 @@
         display: flex;
         align-items: center;
         gap: .5em;
-        font-size: 1.5em;
+        font-size: 1.6em;
         white-space: nowrap;
     }
 

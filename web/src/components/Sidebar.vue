@@ -89,6 +89,7 @@
 
 <style scoped>
     span {
+        font-size: 1.1em;
         white-space: nowrap;
         transform: translateX(16em);
         transition-property: transform;

@@ -1,40 +1,47 @@
 <template>
-    <ul class="plan-list">
-      <li v-for="(plan, index) in plans" :key="index" class="plan-item">
-        <div class="plan-section">
-            <div class="indicators">
-                <span>
-                    <font-awesome-icon icon="fa-solid fa-calendar-day"/>
-                    <p>{{ plan.workouts.length }}</p>
+    <Header :title="selectedPlan ? selectedPlan.title : 'Dashboard'"/>
+    <div class="content">
+        <ul v-if="selectedPlan == null" class="plan-list">
+            <li v-for="(plan, index) in plans" :key="index" class="plan-item">
+                <div class="plan-section">
+                    <div v-if="plan.workouts" class="indicators">
+                        <span>
+                            <font-awesome-icon icon="fa-solid fa-calendar-day"/>
+                            <p>{{ plan.workouts.length }}</p>
+                        </span>
+                        <span>
+                            <font-awesome-icon icon="fa-solid fa-bolt"/>
+                            <p>{{ totalVolume(plan) }}</p>
+                        </span>
+                    </div>
+                    <a class="button">
+                        <font-awesome-icon icon="fa-solid fa-ellipsis" size="lg"/>
+                    </a>
+                </div>
+                <div class="plan-section">
+                    <div class="text">
+                        <p class="title">{{ plan.title }}</p>
+                        <p v-if="plan.description" class="description">{{ plan.description }}</p>
+                    </div>
+                    <a @click.prevent="selectPlan(plan)" class="button">
+                        <font-awesome-icon icon="fa-solid fa-angle-right" size="lg"/>
+                    </a>
+                </div>
+            </li>
+            <a class="plan-item">
+                <span class="new-plan-button">
+                    <font-awesome-icon icon="fa-solid fa-plus" size="xl"/>
                 </span>
-                <span>
-                    <font-awesome-icon icon="fa-solid fa-bolt"/>
-                    <p>{{ totalVolume(plan) }}</p>
-                </span>
-            </div>
-            <a class="button">
-                <font-awesome-icon icon="fa-solid fa-ellipsis" size="lg"/>
             </a>
-        </div>
-        <div class="plan-section">
-            <div class="text">
-                <p class="title">{{ plan.title }}</p>
-                <p class="description">{{ plan.description }}</p>
-            </div>
-            <a class="button">
-                <font-awesome-icon icon="fa-solid fa-angle-right" size="lg"/>
-            </a>
-        </div>
-      </li>
-      <a class="plan-item">
-        <span class="new-plan-button">
-            <font-awesome-icon icon="fa-solid fa-plus" size="xl"/>
-        </span>
-      </a>
-    </ul>
+        </ul>
+        <ul v-else></ul>
+    </div>
 </template>
 
 <script setup>
+    import { ref } from 'vue';
+    import Header from './Header.vue';
+
     const plans = [
         {
             title: "My plan",
@@ -63,6 +70,12 @@
         },
     ];
 
+    const selectedPlan = ref(null);
+
+    function selectPlan(plan) {
+        selectedPlan.value = plan;
+    }
+
     function totalVolume(plan) {
         let totalVolume = 0;
         plan.workouts.map(workout => {
@@ -77,6 +90,8 @@
 </script>
 
 <style scoped>
+    @import url("../../css/appPage.css");
+
     .plan-list {
         width: 100%;
         display: grid;
@@ -154,6 +169,7 @@
         width: 2.5em;
         height: 2.5em;
         display: flex;
+        margin-left: auto;
         transition: background-color 300ms;
     }
 
