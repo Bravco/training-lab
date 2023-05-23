@@ -23,7 +23,7 @@
                 </li>
             </ul>
         </div>
-        <Button v-else label="Sign In" :onClick="navigateToAuth"/>
+        <TextButton v-else label="Sign In" :onClick="navigateToAuth"/>
     </nav>
 </template>
 
@@ -32,7 +32,7 @@
     import { logout } from "../firebase/index.js"
     import router from "../router";
     import Logo from "../components/Logo.vue";
-    import Button from "../components/Button.vue";
+    import TextButton from "../components/TextButton.vue";
 
     const props = defineProps({
         isLoggedIn: {
