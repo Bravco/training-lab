@@ -17,7 +17,7 @@
             <div class="plan-section">
                 <div class="text">
                     <p class="plan-title">{{ plan.title }}</p>
-                    <p v-if="plan.description" class="description">{{ plan.description }}</p>
+                    <p v-if="plan.description" class="plan-description">{{ plan.description }}</p>
                 </div>
                 <IconButton :onClick="() => selectPlan(plan)" icon="fa-angle-right"/>
             </div>
@@ -110,7 +110,7 @@
         font-size: 1.65em;
     }
 
-    .description {
+    .plan-description {
         font-weight: 600;
         color: var(--color-text-alt);
     }

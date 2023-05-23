@@ -6,9 +6,7 @@
                 <li class="workout-item">
                     <ul class="exercise-list">
                         <li class="exercise-item">
-                            <div class="left">
-                                <p class="workout-title">{{ workout.title }}</p>
-                            </div>
+                            <p class="workout-title">{{ workout.title }}</p>
                             <div class="right">
                                 <span class="total-volume">{{ totalWorkoutVolume(workout) }}</span>
                                 <IconButton icon="fa-xmark" background-color-var="color30"/>
@@ -16,10 +14,7 @@
                         </li>
                         <hr>
                         <li v-for="exercise in workout.exercises" :key="exercise" class="exercise-item">
-                            <div class="left">
-                                <p class="exercise-title">{{ exercise.title }}</p>
-                                <p class="exercise-description">{{ exercise.description }}</p>
-                            </div>
+                            <p class="exercise-title">{{ exercise.title }}</p>
                             <div class="right">
                                 <span class="volume">{{ exercise.volume }}</span>
                                 <IconButton icon="fa-minus" background-color-var="color30"/>
@@ -105,23 +100,12 @@
         color: var(--color-primary);
     }
 
-    .exercise-title {
-        font-size: 1.25em;
-    }
-
-    .exercise-description {
-        font-size: .9em;
-        font-weight: 600;
-        color: var(--color-text-alt);
-    }
-
-    .volume {
+    .volume, .total-volume {
         font-weight: 600;
     }
 
     .total-volume {
         font-size: 1.25em;
-        font-weight: 600;
         color: var(--color-primary);
     }
 </style>
