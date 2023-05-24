@@ -2,7 +2,7 @@
     <ul class="day-list">
         <li v-for="(workout, index) in selectedPlan.workouts" :key="workout" class="day-item">
             <p class="index">#{{ index+1 }}</p>
-            <ul v-if="workout.exercises" class="workout-list">
+            <ul v-if="Object.keys(workout).length !== 0" class="workout-list">
                 <li class="workout-item">
                     <ul class="exercise-list">
                         <li class="exercise-item">
