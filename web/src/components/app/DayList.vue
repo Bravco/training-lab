@@ -20,6 +20,9 @@
                                 <IconButton icon="fa-minus" background-color-var="color30"/>
                             </div>
                         </li>
+                        <li class="exercise-item">
+                            <IconButton icon="fa-plus" background-color-var="color30"/>
+                        </li>
                     </ul>
                 </li>
             </ul>
@@ -87,6 +90,10 @@
         align-items: center;
         gap: 3em;
         padding: 1em;
+    }
+
+    .exercise-item:last-child {
+        justify-content: center;
     }
 
     .right {
