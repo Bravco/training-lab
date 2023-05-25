@@ -48,9 +48,6 @@ input {
     border: 1px solid #DEDEDE;
     border-radius: .5em;
     font-size: 1em;
-    outline: none;
-    background-color: transparent;
-    color: var(--color-text);
     transition: border-color 300ms;
 }
 

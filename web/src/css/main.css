@@ -60,11 +60,14 @@ a:hover, button:hover {
     filter: opacity(50%);
 }
 
-.contenteditable {
+input, .contenteditable {
     border: none;
     outline: none;
+    background-color: transparent;
+    color: var(--color-text);
+}
+
+.contenteditable {
     resize: none;
     font-size: inherit;
-    background-color: transparent;
-    color: inherit;
 }

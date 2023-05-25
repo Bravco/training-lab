@@ -1,10 +1,10 @@
 <template>
     <li class="plan-item">
         <div class="plan-section">
-            <div v-if="plan.workouts" class="plan-indicators">
+            <div v-if="plan.days" class="plan-indicators">
                 <span>
                     <font-awesome-icon icon="fa-solid fa-calendar-day"/>
-                    <p>{{ plan.workouts.length }}</p>
+                    <p>{{ plan.days.length }}</p>
                 </span>
                 <span>
                     <font-awesome-icon icon="fa-solid fa-bolt"/>

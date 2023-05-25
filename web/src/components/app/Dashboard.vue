@@ -42,8 +42,12 @@
 
     function totalPlanVolume(plan) {
         let totalVolume = 0;
-        plan.workouts.map(workout => {
-            totalVolume += totalWorkoutVolume(workout);
+        plan.days.map(day => {
+            if (day.workouts) {
+                day.workouts.map(workout => {
+                    totalVolume += totalWorkoutVolume(workout);
+                });
+            }
         });
         return totalVolume;
     }

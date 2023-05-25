@@ -1,46 +1,47 @@
 <template>
     <ul class="day-list">
-        <li v-for="(workout, workoutIndex) in plan.workouts" :key="workout" class="day-item">
-            <p class="index">#{{ workoutIndex + 1 }}</p>
-            <ul v-if="Object.keys(workout).length !== 0" class="workout-list">
-                <li class="workout-item">
+        <li v-for="(day, dayIndex) in plan.days" :key="day" class="day-item">
+            <p class="index">#{{ dayIndex + 1 }}</p>
+            <ul v-if="day.workouts" class="workout-list">
+                <li v-for="(workout, workoutIndex) in day.workouts" :key="workout" class="workout-item">
                     <ul class="exercise-list">
                         <li class="exercise-item">
                             <p 
                                 class="contenteditable workout-title" 
                                 role="textbox" 
                                 spellcheck="false" 
-                                @input="onWorkoutTitleInput($event, workoutIndex)" 
+                                @input="(e) => { workout.title = e.target.innerText; }" 
                                 contenteditable>
                             {{ workout.title }}</p>
                             <div class="right">
                                 <span class="total-volume">{{ totalWorkoutVolume(workout) }}</span>
-                                <IconButton icon="fa-xmark" background-color-var="color30"/>
+                                <IconButton :on-click="() => deleteWorkout(dayIndex, workout)" icon="fa-xmark" background-color-var="color30"/>
                             </div>
                         </li>
                         <hr>
-                        <li v-for="(exercise, exerciseIndex) in workout.exercises" :key="exercise" class="exercise-item">
+                        <li v-for="exercise in workout.exercises" :key="exercise" class="exercise-item">
                             <p 
                                 class="contenteditable exercise-title" 
                                 role="textbox" 
                                 spellcheck="false" 
-                                @input="onExerciseTitleInput($event, workoutIndex, exerciseIndex)" 
+                                @input="(e) => { exercise.title = e.target.innerText; }" 
                                 contenteditable>
                             {{ exercise.title }}</p>
                             <div class="right">
-                                <span class="volume">{{ exercise.volume }}</span>
-                                <IconButton icon="fa-minus" background-color-var="color30"/>
+                                <input v-model="exercise.volume" class="volume" type="number" min="1" max="99">
+                                <IconButton :on-click="() => deleteExercise(dayIndex, workoutIndex, exercise)" icon="fa-minus" background-color-var="color30"/>
                             </div>
                         </li>
                         <li class="exercise-item">
-                            <IconButton icon="fa-plus" background-color-var="color30"/>
+                            <IconButton :on-click="() => addExercise(dayIndex, workoutIndex)" icon="fa-plus" background-color-var="color30"/>
                         </li>
                     </ul>
                 </li>
             </ul>
-            <IconButton icon="fa-plus"/>
+            <IconButton :on-click="() => addWorkout(dayIndex)" icon="fa-plus"/>
+            <IconButton :on-click="() => deleteDay(day)" class="delete-day-btn" icon="fa-trash-can"/>
         </li>
-        <IconButton icon="fa-plus" background-color-var="color30"/>
+        <IconButton :on-click="addDay" icon="fa-plus" background-color-var="color30"/>
     </ul>
     <a @click.prevent="savePlan" class="floating-btn">
         <font-awesome-icon icon="fa-solid fa-save" size="lg"/>
@@ -66,14 +67,65 @@
 
     const plan = ref({});
 
-    function onWorkoutTitleInput(event, workoutIndex) {
-        let input = event.target.innerText;
-        plan.value.workouts[workoutIndex].title = input;
+    function addDay() {
+        plan.value.days.push({});
     }
 
-    function onExerciseTitleInput(event, workoutIndex, exerciseIndex) {
-        let input = event.target.innerText;
-        plan.value.workouts[workoutIndex].exercises[exerciseIndex].title = input;
+    function deleteDay(day) {
+        plan.value.days = plan.value.days.filter(item => {
+            return item !== day;
+        });
+    }
+
+    function addWorkout(dayIndex) {
+        let days = plan.value.days[dayIndex];
+        const newWorkout = {
+            title: "New Workout",
+        };
+
+        if (days.workouts) {
+            days.workouts.push(newWorkout);
+        } else {
+            days.workouts = [newWorkout];
+        }
+        
+        plan.value.days[dayIndex] = days;
+    }
+
+    function deleteWorkout(dayIndex, workout) {
+        let day = plan.value.days[dayIndex];
+        day.workouts = day.workouts.filter(item => {
+            return item !== workout;
+        });
+
+        if (day.workouts.length === 0) {
+            delete day.workouts;
+        }
+
+        plan.value.days[dayIndex] = day;
+    }
+
+    function addExercise(dayIndex, workoutIndex) {
+        let exercises = plan.value.days[dayIndex].workouts[workoutIndex].exercises;
+        const newExercise = {
+            title: "New Exercise",
+            volume: 1,
+        };
+
+        if (exercises) {
+            exercises.push(newExercise);
+        } else {
+            exercises = [newExercise];
+        }
+
+        plan.value.days[dayIndex].workouts[workoutIndex].exercises = exercises;
+    }
+
+    function deleteExercise(dayIndex, workoutIndex, exercise) {
+        plan.value.days[dayIndex].workouts[workoutIndex].exercises =
+            plan.value.days[dayIndex].workouts[workoutIndex].exercises.filter(item => {
+                return item !== exercise;
+            });
     }
 
     function savePlan() {
@@ -123,7 +175,8 @@
 
     .exercise-item {
         display: grid;
-        grid-template-columns: 3fr 1fr;
+        grid-template-columns: 10em 1fr;
+        gap: 2em;
         align-items: center;
         padding: 1em;
     }
@@ -133,19 +186,19 @@
         place-items: center;
     }
 
-    .exercise-title {
-        max-width: 10em;
-    }
-
     .right {
-        display: flex;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
         align-items: center;
-        gap: 1em;
     }
 
     .workout-title {
-        max-width: 8em;
         font-size: 1.5em;
+        color: var(--color-primary);
+    }
+
+    .total-volume {
+        font-size: 1.25em;
         color: var(--color-primary);
     }
 
@@ -153,9 +206,12 @@
         font-weight: 600;
     }
 
-    .total-volume {
-        font-size: 1.25em;
-        color: var(--color-primary);
+    .volume {
+        width: 2.25em;
+    }
+
+    .delete-day-btn {
+        margin-top: auto;
     }
 
     .floating-btn {
