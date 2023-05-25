@@ -59,3 +59,12 @@ a, button {
 a:hover, button:hover {
     filter: opacity(50%);
 }
+
+.contenteditable {
+    border: none;
+    outline: none;
+    resize: none;
+    font-size: inherit;
+    background-color: transparent;
+    color: inherit;
+}

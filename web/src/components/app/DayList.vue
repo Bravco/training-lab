@@ -1,20 +1,32 @@
 <template>
     <ul class="day-list">
-        <li v-for="(workout, index) in plan.workouts" :key="workout" class="day-item">
-            <p class="index">#{{ index+1 }}</p>
+        <li v-for="(workout, workoutIndex) in plan.workouts" :key="workout" class="day-item">
+            <p class="index">#{{ workoutIndex + 1 }}</p>
             <ul v-if="Object.keys(workout).length !== 0" class="workout-list">
                 <li class="workout-item">
                     <ul class="exercise-list">
                         <li class="exercise-item">
-                            <p class="workout-title">{{ workout.title }}</p>
+                            <p 
+                                class="contenteditable workout-title" 
+                                role="textbox" 
+                                spellcheck="false" 
+                                @input="onWorkoutTitleInput($event, workoutIndex)" 
+                                contenteditable>
+                            {{ workout.title }}</p>
                             <div class="right">
                                 <span class="total-volume">{{ totalWorkoutVolume(workout) }}</span>
                                 <IconButton icon="fa-xmark" background-color-var="color30"/>
                             </div>
                         </li>
                         <hr>
-                        <li v-for="exercise in workout.exercises" :key="exercise" class="exercise-item">
-                            <p class="exercise-title">{{ exercise.title }}</p>
+                        <li v-for="(exercise, exerciseIndex) in workout.exercises" :key="exercise" class="exercise-item">
+                            <p 
+                                class="contenteditable exercise-title" 
+                                role="textbox" 
+                                spellcheck="false" 
+                                @input="onExerciseTitleInput($event, workoutIndex, exerciseIndex)" 
+                                contenteditable>
+                            {{ exercise.title }}</p>
                             <div class="right">
                                 <span class="volume">{{ exercise.volume }}</span>
                                 <IconButton icon="fa-minus" background-color-var="color30"/>
@@ -30,14 +42,14 @@
         </li>
         <IconButton icon="fa-plus" background-color-var="color30"/>
     </ul>
-    <a class="floating-btn">
-        <font-awesome-icon icon="fa-solid fa-check" size="lg"/>
+    <a @click.prevent="savePlan" class="floating-btn">
+        <font-awesome-icon icon="fa-solid fa-save" size="lg"/>
     </a>
 </template>
 
 <script setup>
     import { ref } from 'vue';
-    import { onSnapshot } from 'firebase/firestore';
+    import { onSnapshot, setDoc } from 'firebase/firestore';
     import { planDoc } from '../../firebase';
     import IconButton from '../IconButton.vue';
 
@@ -54,6 +66,20 @@
 
     const plan = ref({});
 
+    function onWorkoutTitleInput(event, workoutIndex) {
+        let input = event.target.innerText;
+        plan.value.workouts[workoutIndex].title = input;
+    }
+
+    function onExerciseTitleInput(event, workoutIndex, exerciseIndex) {
+        let input = event.target.innerText;
+        plan.value.workouts[workoutIndex].exercises[exerciseIndex].title = input;
+    }
+
+    function savePlan() {
+        setDoc(planDoc(props.planId), plan.value);
+    }
+
     onSnapshot(planDoc(props.planId), planSnapshot => {
         plan.value = planSnapshot.data();
     });
@@ -69,7 +95,6 @@
 
     .day-item {
         height: 100%;
-        max-width: 24em;
         display: flex;
         flex-direction: column;
         gap: 1em;
@@ -97,15 +122,19 @@
     }
 
     .exercise-item {
-        display: flex;
-        justify-content: space-between;
+        display: grid;
+        grid-template-columns: 3fr 1fr;
         align-items: center;
-        gap: 3em;
         padding: 1em;
     }
 
     .exercise-item:last-child {
-        justify-content: center;
+        grid-template-columns: 1fr;
+        place-items: center;
+    }
+
+    .exercise-title {
+        max-width: 10em;
     }
 
     .right {
@@ -115,6 +144,7 @@
     }
 
     .workout-title {
+        max-width: 8em;
         font-size: 1.5em;
         color: var(--color-primary);
     }
