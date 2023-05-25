@@ -1,6 +1,6 @@
 <template>
     <ul class="day-list">
-        <li v-for="(workout, index) in selectedPlan.workouts" :key="workout" class="day-item">
+        <li v-for="(workout, index) in plan.workouts" :key="workout" class="day-item">
             <p class="index">#{{ index+1 }}</p>
             <ul v-if="Object.keys(workout).length !== 0" class="workout-list">
                 <li class="workout-item">
@@ -30,20 +30,32 @@
         </li>
         <IconButton icon="fa-plus" background-color-var="color30"/>
     </ul>
+    <a class="floating-btn">
+        <font-awesome-icon icon="fa-solid fa-check" size="lg"/>
+    </a>
 </template>
 
 <script setup>
+    import { ref } from 'vue';
+    import { onSnapshot } from 'firebase/firestore';
+    import { planDoc } from '../../firebase';
     import IconButton from '../IconButton.vue';
 
     const props = defineProps({
-        selectedPlan: {
-            type: Object,
-            default: [],
+        selectedPlanId: {
+            type: String,
+            default: "",
         },
         totalWorkoutVolume: {
             type: Function,
             default: () => {},
         },
+    });
+
+    const plan = ref({});
+
+    onSnapshot(planDoc(props.selectedPlanId), planSnapshot => {
+        plan.value = planSnapshot.data();
     });
 </script>
 
@@ -114,5 +126,18 @@
     .total-volume {
         font-size: 1.25em;
         color: var(--color-primary);
+    }
+
+    .floating-btn {
+        width: 3em;
+        height: 3em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        right: 2em;
+        bottom: 2em;
+        border-radius: 100%;
+        background-color: var(--color-primary);
     }
 </style>

@@ -1,6 +1,6 @@
 <template>
     <ul class="plan-list">
-        <li v-for="(plan, index) in plans" :key="plan" class="plan-item">
+        <li v-for="plan in plans" :key="plan" class="plan-item">
             <div class="plan-section">
                 <div v-if="plan.workouts" class="indicators">
                     <span>
@@ -19,7 +19,7 @@
                     <p class="plan-title">{{ plan.title }}</p>
                     <p v-if="plan.description" class="plan-description">{{ plan.description }}</p>
                 </div>
-                <IconButton :onClick="() => selectPlan(plan)" icon="fa-angle-right"/>
+                <IconButton :onClick="() => selectPlan(plan.id)" icon="fa-angle-right"/>
             </div>
         </li>
         <a class="plan-item">
