@@ -63,6 +63,10 @@
             type: Function,
             default: () => {},
         },
+        clearSelectedPlan: {
+            type: Function,
+            default: () => {},
+        },
     });
 
     const plan = ref({});
@@ -130,6 +134,7 @@
 
     function savePlan() {
         setDoc(planDoc(props.planId), plan.value);
+        props.clearSelectedPlan();
     }
 
     onSnapshot(planDoc(props.planId), planSnapshot => {

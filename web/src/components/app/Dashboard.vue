@@ -15,7 +15,7 @@
                 </span>
             </a>
         </ul>
-        <DayList v-else :plan-id="selectedPlanId" :total-workout-volume="totalWorkoutVolume"/>
+        <DayList v-else :plan-id="selectedPlanId" :total-workout-volume="totalWorkoutVolume" :clear-selected-plan="clearSelectedPlan"/>
     </div>
 </template>
 
@@ -38,6 +38,10 @@
         getDoc(planDoc(id)).then(planSnapshot => {
             selectedPlanTitle.value = planSnapshot.data().title;
         });
+    }
+
+    function clearSelectedPlan() {
+        selectedPlanId.value = null;
     }
 
     function totalPlanVolume(plan) {
