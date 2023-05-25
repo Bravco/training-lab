@@ -42,7 +42,7 @@
     import IconButton from '../IconButton.vue';
 
     const props = defineProps({
-        selectedPlanId: {
+        planId: {
             type: String,
             default: "",
         },
@@ -54,7 +54,7 @@
 
     const plan = ref({});
 
-    onSnapshot(planDoc(props.selectedPlanId), planSnapshot => {
+    onSnapshot(planDoc(props.planId), planSnapshot => {
         plan.value = planSnapshot.data();
     });
 </script>
