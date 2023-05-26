@@ -72,28 +72,40 @@
     const plan = ref({});
 
     function addDay() {
-        plan.value.days.push({});
+        let days = plan.value.days;
+
+        if (days) {
+            days.push({});
+        } else {
+            days = [{}];
+        }
+
+        plan.value.days = days;
     }
 
     function deleteDay(day) {
         plan.value.days = plan.value.days.filter(item => {
             return item !== day;
         });
+
+        if (plan.value.days.length === 0) {
+            delete plan.value.days;
+        }
     }
 
     function addWorkout(dayIndex) {
-        let days = plan.value.days[dayIndex];
+        let day = plan.value.days[dayIndex];
         const newWorkout = {
             title: "New Workout",
         };
 
-        if (days.workouts) {
-            days.workouts.push(newWorkout);
+        if (day.workouts) {
+            day.workouts.push(newWorkout);
         } else {
-            days.workouts = [newWorkout];
+            day.workouts = [newWorkout];
         }
         
-        plan.value.days[dayIndex] = days;
+        plan.value.days[dayIndex] = day;
     }
 
     function deleteWorkout(dayIndex, workout) {

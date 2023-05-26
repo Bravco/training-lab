@@ -1,14 +1,14 @@
 <template>
     <li class="plan-item">
         <div class="plan-section">
-            <div v-if="plan.days" class="plan-indicators">
+            <div class="plan-indicators">
                 <span>
                     <font-awesome-icon icon="fa-solid fa-calendar-day"/>
-                    <p>{{ plan.days.length }}</p>
+                    <p>{{ plan.days ? plan.days.length : 0 }}</p>
                 </span>
                 <span>
                     <font-awesome-icon icon="fa-solid fa-bolt"/>
-                    <p>{{ volume }}</p>
+                    <p>{{ plan.days ? volume : 0 }}</p>
                 </span>
             </div>
             <IconButton icon="fa-ellipsis"/>
