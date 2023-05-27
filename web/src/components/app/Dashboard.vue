@@ -9,7 +9,7 @@
                 :total-volume="totalPlanVolume(plan)"
                 class="plan-item"
             />
-            <a class="plan-item">
+            <a @click.prevent="addPlan" class="plan-item">
                 <span class="new-plan-button">
                     <font-awesome-icon icon="fa-solid fa-plus" size="xl"/>
                 </span>
@@ -21,7 +21,7 @@
 
 <script setup>
     import { ref } from 'vue';
-    import { onSnapshot, getDoc } from 'firebase/firestore';
+    import { onSnapshot, getDoc, addDoc, updateDoc } from 'firebase/firestore';
     import { plansCollection, planDoc } from '../../firebase';
     import Header from './Header.vue';
     import PlanTile from "./PlanTile.vue"
@@ -31,6 +31,17 @@
 
     const selectedPlanId = ref(null);
     const selectedPlanTitle = ref(null);
+
+    function addPlan() {
+        addDoc(plansCollection, {
+            title: "My plan",
+            description: "My description",
+        }).then(doc => {
+            updateDoc(planDoc(doc.id), {
+                id: doc.id,
+            });
+        });
+    }
 
     function selectPlan(id) {
         selectedPlanId.value = id;

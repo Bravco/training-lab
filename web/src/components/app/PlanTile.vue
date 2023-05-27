@@ -11,7 +11,7 @@
                     <p>{{ plan.days ? totalVolume : 0 }}</p>
                 </span>
             </div>
-            <IconButton icon="fa-trash-can"/>
+            <IconButton @click.prevent="deletePlan" icon="fa-trash-can"/>
         </div>
         <div class="plan-section">
             <div class="text">
@@ -36,7 +36,7 @@
 </template>
 
 <script setup>
-    import { updateDoc } from 'firebase/firestore';
+    import { updateDoc, deleteDoc, deleteField } from 'firebase/firestore';
     import { planDoc } from '../../firebase';
     import IconButton from '../IconButton.vue';
 
@@ -57,14 +57,18 @@
 
     function updateTitle(value) {
         updateDoc(planDoc(props.plan.id), {
-            title: value,
+            title: value === "" ? deleteField() : value,
         });
     }
 
     function updateDescription(value) {
         updateDoc(planDoc(props.plan.id), {
-            description: value,
+            description: value === "" ? deleteField() : value,
         });
+    }
+
+    function deletePlan() {
+        deleteDoc(planDoc(props.plan.id));
     }
 </script>
 
