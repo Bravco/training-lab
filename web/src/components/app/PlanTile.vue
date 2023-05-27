@@ -8,15 +8,27 @@
                 </span>
                 <span>
                     <font-awesome-icon icon="fa-solid fa-bolt"/>
-                    <p>{{ plan.days ? volume : 0 }}</p>
+                    <p>{{ plan.days ? totalVolume : 0 }}</p>
                 </span>
             </div>
-            <IconButton icon="fa-ellipsis"/>
+            <IconButton icon="fa-trash-can"/>
         </div>
         <div class="plan-section">
             <div class="text">
-                <p class="plan-title">{{ plan.title }}</p>
-                <p v-if="plan.description" class="plan-description">{{ plan.description }}</p>
+                <input 
+                    v-model="plan.title"
+                    class="plan-title" 
+                    type="text" maxlength="16" 
+                    spellcheck="false" 
+                    @input="event => updateTitle(event.target.value)"
+                >
+                <input 
+                    v-model="plan.description"
+                    class="plan-description" 
+                    type="text" maxlength="32" 
+                    spellcheck="false" 
+                    @input="event => updateDescription(event.target.value)"
+                >
             </div>
             <IconButton :onClick="() => selectPlan(plan.id)" icon="fa-angle-right"/>
         </div>
@@ -24,6 +36,8 @@
 </template>
 
 <script setup>
+    import { updateDoc } from 'firebase/firestore';
+    import { planDoc } from '../../firebase';
     import IconButton from '../IconButton.vue';
 
     const props = defineProps({
@@ -35,25 +49,36 @@
             type: Function,
             default: () => {},
         },
-        volume: {
+        totalVolume: {
             type: Number,
             default: 0,
         },
     });
+
+    function updateTitle(value) {
+        updateDoc(planDoc(props.plan.id), {
+            title: value,
+        });
+    }
+
+    function updateDescription(value) {
+        updateDoc(planDoc(props.plan.id), {
+            description: value,
+        });
+    }
 </script>
 
 <style scoped>
-    .plan-section {
+    .plan-section:first-child {
         display: flex;
         justify-content: space-between;
-    }
-
-    .plan-section:first-child {
         align-items: flex-start;
     }
 
     .plan-section:last-child {
-        align-items: flex-end;
+        display: grid;
+        grid-template-columns: 17.5em 1fr;
+        align-items: center;
     }
 
     .plan-indicators span {

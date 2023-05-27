@@ -6,7 +6,7 @@
                 v-for="plan in plans" 
                 :key="plan.id" :plan="plan" 
                 :select-plan="selectPlan" 
-                :volume="totalPlanVolume(plan)"
+                :total-volume="totalPlanVolume(plan)"
                 class="plan-item"
             />
             <a class="plan-item">
