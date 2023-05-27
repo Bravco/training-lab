@@ -5,14 +5,16 @@
     :select-page-index="selectPageIndex"
   />
   <section id="app">
-    <Dashboard v-if="selectedPageIndex == 0"/>
+    <Dashboard v-if="selectedPageIndex === 0"/>
+    <Profile v-else-if="selectedPageIndex === 1"/>
   </section>
 </template>
 
 <script setup>
   import { ref } from 'vue';
   import Sidebar from "../components/Sidebar.vue";
-  import Dashboard from "../components/app/Dashboard.vue";
+  import Dashboard from "../components/app/dashboard/Dashboard.vue";
+  import Profile from '../components/app/Profile.vue';
 
   const pages = [
     { title: "Dashboard", icon: "fa-cube", },

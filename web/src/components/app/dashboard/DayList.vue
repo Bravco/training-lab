@@ -51,8 +51,8 @@
 <script setup>
     import { ref } from 'vue';
     import { onSnapshot, setDoc } from 'firebase/firestore';
-    import { planDoc } from '../../firebase';
-    import IconButton from '../IconButton.vue';
+    import { planDoc } from '../../../firebase';
+    import IconButton from '../../IconButton.vue';
 
     const props = defineProps({
         planId: {
@@ -166,6 +166,7 @@
         height: 100%;
         display: flex;
         flex-direction: column;
+        align-self: flex-start;
         gap: 1em;
         align-items: center;
         padding: 1.5em;
@@ -195,7 +196,7 @@
         grid-template-columns: 10em 1fr;
         gap: 2em;
         align-items: center;
-        padding: 1em;
+        padding: .75em 1em;
     }
 
     .exercise-item:last-child {

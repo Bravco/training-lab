@@ -39,8 +39,8 @@
 
 <script setup>
     import { updateDoc, deleteDoc, deleteField } from 'firebase/firestore';
-    import { planDoc } from '../../firebase';
-    import IconButton from '../IconButton.vue';
+    import { planDoc } from '../../../firebase';
+    import IconButton from '../../IconButton.vue';
 
     const props = defineProps({
         plan: {

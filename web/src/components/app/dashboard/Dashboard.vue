@@ -22,8 +22,8 @@
 <script setup>
     import { ref } from 'vue';
     import { onSnapshot, getDoc, addDoc, updateDoc } from 'firebase/firestore';
-    import { plansCollection, planDoc } from '../../firebase';
-    import Header from './Header.vue';
+    import { plansCollection, planDoc } from '../../../firebase';
+    import Header from '../Header.vue';
     import PlanTile from "./PlanTile.vue"
     import DayList from "./DayList.vue";
 
@@ -89,7 +89,7 @@
 </script>
 
 <style scoped>
-    @import url("../../css/appPage.css");
+    @import url("../../../css/appPage.css");
 
     .content {
         flex: 1;
