@@ -18,14 +18,16 @@
                 <input 
                     v-model="plan.title"
                     class="plan-title" 
-                    type="text" maxlength="16" 
+                    type="text" 
+                    maxlength="16" 
                     spellcheck="false" 
                     @input="event => updateTitle(event.target.value)"
                 >
                 <input 
                     v-model="plan.description"
                     class="plan-description" 
-                    type="text" maxlength="32" 
+                    type="text" 
+                    maxlength="32" 
                     spellcheck="false" 
                     @input="event => updateDescription(event.target.value)"
                 >
@@ -105,6 +107,7 @@
     }
 
     .plan-description {
+        word-wrap: break-word;
         font-weight: 600;
         color: var(--color-text-alt);
     }
