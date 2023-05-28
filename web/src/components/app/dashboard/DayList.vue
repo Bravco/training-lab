@@ -41,7 +41,9 @@
             <IconButton :on-click="() => addWorkout(dayIndex)" icon="fa-plus"/>
             <IconButton :on-click="() => deleteDay(day)" class="delete-day-btn" icon="fa-trash-can"/>
         </li>
-        <IconButton :on-click="addDay" icon="fa-plus" background-color-var="color30"/>
+        <a @click.prevent="addDay" class="add-day-button">
+            <font-awesome-icon icon="fa-solid fa-plus" size="xl"/>
+        </a>
     </ul>
     <a @click.prevent="savePlan" class="floating-btn">
         <font-awesome-icon icon="fa-solid fa-save" size="lg"/>
@@ -243,5 +245,24 @@
         bottom: 2em;
         border-radius: 100%;
         background-color: var(--color-primary);
+    }
+
+    .add-day-button {
+        width: 4em;
+        height: 4em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--color-text);
+        border: 2px solid var(--color-text);
+        border-radius: 100%;
+        transition-property: color, border-color;
+        transition-duration: 300ms;
+    }
+
+    .add-day-button:hover {
+        filter: none;
+        color: var(--color-primary);
+        border-color: var(--color-primary);
     }
 </style>
