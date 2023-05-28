@@ -98,18 +98,18 @@
     .plan-list {
         width: 100%;
         display: grid;
-        grid-template-columns: repeat(auto-fit, 24em);
-        gap: 2em;
+        grid-template-columns: repeat(auto-fit, 24rem);
+        gap: 2rem;
     }
 
     .plan-item {
         width: 100%;
-        height: 18em;
+        height: 18rem;
         display: flex;
         justify-content: space-between;
         flex-direction: column;
-        padding: 1.5em 2em 2.5em 2em;
-        border-radius: 1em;
+        padding: 1.5rem 2rem 2.5rem 2rem;
+        border-radius: 1rem;
         background-color: var(--color-30);
     }
 
@@ -124,8 +124,8 @@
     }
 
     .new-plan-button {
-        width: 4em;
-        height: 4em;
+        width: 4rem;
+        height: 4rem;
         display: flex;
         align-items: center;
         justify-content: center;

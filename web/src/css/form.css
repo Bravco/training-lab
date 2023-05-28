@@ -1,11 +1,11 @@
 .container {
     min-width: 25vw;
     display: grid;
-    gap: 2.5em;
-    padding: 4em 3em;
+    gap: 2.5rem;
+    padding: 4rem 3rem;
     background-color: var(--color-30);
     box-shadow: var(--box-shadow);
-    border-radius: 1em;
+    border-radius: 1rem;
 }
 
 .subtitle, .btn-wrapper, label  {
@@ -14,13 +14,13 @@
 }
 
 .title {
-    font-size: 2em;
+    font-size: 2rem;
 }
 
 .container form {
     display: flex;
     flex-direction: column;
-    gap: 2em;
+    gap: 2rem;
 }
 
 .inputfield {
@@ -30,24 +30,24 @@
 .inputfield .input-after {
     position: absolute;
     top: 50%;
-    right: 1em;
+    right: 1rem;
 }
 
 .inputfield, .btn-wrapper  {
     display: grid;
-    gap: .5em;
+    gap: .5rem;
 }
 
 label {
-    font-size: .8em;
+    font-size: .8rem;
     transform: translateY(2px);
 }
 
 input {
-    padding: .8em;
+    padding: .8rem;
     border: 1px solid #DEDEDE;
-    border-radius: .5em;
-    font-size: 1em;
+    border-radius: .5rem;
+    font-size: 1rem;
     transition: border-color 300ms;
 }
 
@@ -57,12 +57,12 @@ input:focus {
 
 button {
     width: 100%;
-    padding: .8em 1.6em;
-    border-radius: 16em;
+    padding: .8rem 1.6rem;
+    border-radius: 16rem;
     background-color: var(--color-primary);
     color: white;
     border: none;
-    font-size: 1em;
+    font-size: 1rem;
     font-weight: 600;
     text-transform: uppercase;
     cursor: pointer;

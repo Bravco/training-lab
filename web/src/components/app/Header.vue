@@ -16,7 +16,7 @@
   @import url("../../css/appPage.css");
   
   .title {
-    font-size: 1.6em;
+    font-size: 1.6rem;
     font-weight: 600;
   }
 </style>

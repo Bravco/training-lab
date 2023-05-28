@@ -33,8 +33,8 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 2em;
-    margin-left: 6em;
-    padding: 2em;
+    gap: 2rem;
+    margin-left: 6rem;
+    padding: 2rem;
   }
 </style>

@@ -89,18 +89,17 @@
 
 <style scoped>
     span {
-        font-size: 1.1em;
         white-space: nowrap;
-        transform: translateX(16em);
+        transform: translateX(16rem);
         transition-property: transform;
         transition-duration: 300ms;
     }
 
     .nav {
         height: 100vh;
-        width: 6em;
+        width: 6rem;
         position: fixed;
-        padding: 2em 1.2em;
+        padding: 2rem 1.2rem;
         overflow: hidden;
         background-color: var(--color-30);
         box-shadow: var(--box-shadow);
@@ -110,8 +109,8 @@
     }
 
     .nav.active {
-        width: 18em;
-        padding: 2em 1.7em;
+        width: 18rem;
+        padding: 2rem 1.7rem;
     }
 
     .nav.active span {
@@ -119,18 +118,18 @@
     }
 
     .nav.active .nav-item .nav-link {
-        padding: 1em 1.6em;
+        padding: 1rem 1.6rem;
     }
 
     .toggle-btn {
-        width: 2em;
-        height: 2em;
+        width: 2rem;
+        height: 2rem;
         display: flex;
         justify-content: center;
         align-items: center;
         position: fixed;
-        top: 2em;
-        left: 5em;
+        top: 2rem;
+        left: 5rem;
         border-radius: 100%;
         background-color: var(--color-primary);
         z-index: 101;
@@ -139,7 +138,7 @@
     }
 
     .toggle-btn.active {
-        left: 17em;
+        left: 17rem;
         background-color: var(--color-30);
         transform: rotate(-180deg);
     }
@@ -152,25 +151,25 @@
         height: 100%;
         display: flex;
         flex-direction: column;
-        gap: 2em;
+        gap: 2rem;
     }
 
     .logo {
-        font-size: 1.5em;
+        font-size: 1.5rem;
         font-weight: 600;
-        margin-left: .6em;
+        margin-left: .85rem;
     }
 
     .logo .nav-link {
-        gap: 1em;
+        gap: 1rem;
     }
 
     .nav-item .nav-link {
-        height: 3.5em;
-        padding: 1em 1.3em;
+        height: 3.5rem;
+        padding: 1rem 1.3rem;
         background-color: var(--color-60);
-        border-radius: .5em;
-        gap: 1.5em;
+        border-radius: .5rem;
+        gap: 1.5rem;
     }
 
     .bottom {
@@ -179,11 +178,11 @@
     }
 
     .account {
-        margin-left: 1.2em;
+        margin-left: 1.2rem;
     }
 
     .account .nav-link {
-        gap: 1em;
+        gap: 1rem;
     }
 
     .account .email {
@@ -192,7 +191,7 @@
     }
 
     .account span :not(.email) {
-        font-size: .75em;
+        font-size: .75rem;
         color: var(--color-text-alt);
     }
 

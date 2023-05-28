@@ -161,7 +161,7 @@
         width: 100%;
         display: flex;
         align-items: center;
-        gap: 2em;
+        gap: 2rem;
     }
 
     .day-item {
@@ -169,10 +169,10 @@
         display: flex;
         flex-direction: column;
         align-self: flex-start;
-        gap: 1em;
+        gap: 1rem;
         align-items: center;
-        padding: 1.5em;
-        border-radius: 1em;
+        padding: 1.5rem;
+        border-radius: 1rem;
         background-color: var(--color-30);
     }
 
@@ -184,21 +184,21 @@
     .workout-list {
         width: 100%;
         display: grid;
-        gap: 1em;
+        gap: 1rem;
     }
 
     .workout-item {
-        padding: 1em;
-        border-radius: 1em;
+        padding: 1rem;
+        border-radius: 1rem;
         background-color: var(--color-60);
     }
 
     .exercise-item {
         display: grid;
-        grid-template-columns: 10em 1fr;
-        gap: 2em;
+        grid-template-columns: 10rem 1fr;
+        gap: 2rem;
         align-items: center;
-        padding: .75em 1em;
+        padding: .75rem 1rem;
     }
 
     .exercise-item:last-child {
@@ -213,12 +213,12 @@
     }
 
     .workout-title {
-        font-size: 1.5em;
+        font-size: 1.5rem;
         color: var(--color-primary);
     }
 
     .total-volume {
-        font-size: 1.25em;
+        font-size: 1.25rem;
         color: var(--color-primary);
     }
 
@@ -227,7 +227,7 @@
     }
 
     .volume {
-        width: 2.25em;
+        width: 2.25rem;
     }
 
     .delete-day-btn {
@@ -235,21 +235,21 @@
     }
 
     .floating-btn {
-        width: 3em;
-        height: 3em;
+        width: 3rem;
+        height: 3rem;
         display: flex;
         align-items: center;
         justify-content: center;
         position: fixed;
-        right: 2em;
-        bottom: 2em;
+        right: 2rem;
+        bottom: 2rem;
         border-radius: 100%;
         background-color: var(--color-primary);
     }
 
     .add-day-button {
-        width: 4em;
-        height: 4em;
+        width: 4rem;
+        height: 4rem;
         display: flex;
         align-items: center;
         justify-content: center;

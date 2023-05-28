@@ -63,7 +63,7 @@
 
 <style scoped>
     .navbar {
-        height: 4em;
+        height: 4rem;
         position: fixed;
         top: 0;
         left: 0;
@@ -71,8 +71,8 @@
         justify-content: space-between;
         align-items: center;
         width: 100%;
-        padding: 2.85em 5%;
-        backdrop-filter: blur(1em);
+        padding: 2.85rem 5%;
+        backdrop-filter: blur(1rem);
         transition: background-color 300ms;
         z-index: 100;
     }
@@ -94,18 +94,18 @@
 
     .dropdown-content {
         display: none;
-        gap: 1em;
-        padding: 1.5em 0;
+        gap: 1rem;
+        padding: 1.5rem 0;
         position: absolute;
         right: 0;
-        margin-top: .5em;
+        margin-top: .5rem;
         font-family: var(--font-family-outfit);
-        font-size: 1.1em;
+        font-size: 1.1rem;
         font-weight: 500;
         background-color: var(--color-30);
-        border-radius: 1em;
+        border-radius: 1rem;
         box-shadow: var(--box-shadow);
-        min-width: 16em;
+        min-width: 16rem;
     }
     
     .dropdown-content.show {
@@ -116,8 +116,8 @@
         display: grid;
         align-items: center;
         grid-template-columns: 1fr 6fr 2fr;
-        gap: .5em;
-        padding: 0 1em;
+        gap: .5rem;
+        padding: 0 1rem;
     }
 
     .dropdown-content li:first-child {
@@ -126,6 +126,6 @@
 
     .label {
         color: var(--color-text-alt);
-        font-size: .75em;
+        font-size: .75rem;
     }
 </style>

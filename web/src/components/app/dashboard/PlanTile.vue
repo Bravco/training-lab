@@ -83,14 +83,14 @@
 
     .plan-section:last-child {
         display: grid;
-        grid-template-columns: 17.5em 1fr;
+        grid-template-columns: 17.5rem 1fr;
         align-items: center;
     }
 
     .plan-indicators span {
         display: flex;
         align-items: center;
-        gap: .5em;
+        gap: .5rem;
     }
 
     .plan-indicators span :not(p) {
@@ -99,11 +99,11 @@
 
     .plan-indicators, .text {
         display: grid;
-        gap: .5em;
+        gap: .5rem;
     }
 
     .plan-title {
-        font-size: 1.65em;
+        font-size: 1.65rem;
     }
 
     .plan-description {

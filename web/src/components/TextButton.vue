@@ -19,7 +19,7 @@
         },
         fSize: {
             type: String,
-            default: "1em",
+            default: "1rem",
         },
         onClick: {
             type: Function,
@@ -30,13 +30,13 @@
 
 <style scoped>
     button {
-        padding: .8em 1.6em;
-        border-radius: 16em;
+        padding: .8rem 1.6rem;
+        border-radius: 16rem;
         background-color: var(--color-primary);
         color: white;
         border: none;
         font-family: var(--font-family-outfit);
-        font-size: 1.2em;
+        font-size: 1.2rem;
         font-weight: 600;
         text-transform: uppercase;
         cursor: pointer;

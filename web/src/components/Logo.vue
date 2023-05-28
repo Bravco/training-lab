@@ -9,8 +9,8 @@
     .logo {
         display: flex;
         align-items: center;
-        gap: .5em;
-        font-size: 1.6em;
+        gap: 1rem;
+        font-size: 1.5rem;
         white-space: nowrap;
     }
 
