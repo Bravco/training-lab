@@ -100,8 +100,7 @@
         right: 0;
         margin-top: .5rem;
         font-family: var(--font-family-outfit);
-        font-size: 1.1rem;
-        font-weight: 500;
+        font-weight: 600;
         background-color: var(--color-30);
         border-radius: 1rem;
         box-shadow: var(--box-shadow);
@@ -115,13 +114,9 @@
     .dropdown-content li {
         display: grid;
         align-items: center;
-        grid-template-columns: 1fr 6fr 2fr;
+        grid-template-columns: 1fr 6fr;
         gap: .5rem;
         padding: 0 1rem;
-    }
-
-    .dropdown-content li:first-child {
-        grid-template-columns: 3fr 1fr;
     }
 
     .label {

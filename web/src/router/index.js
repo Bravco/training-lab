@@ -30,18 +30,6 @@ const router = createRouter({
       component: () => import("../views/Error404.vue"),
     },
   ],
-  scrollBehavior: (to, from, savedPosition) => {
-    if (to.hash) {
-      return {
-        el: to.hash,
-      };
-    } else {
-      return {
-        top: 0,
-        left: 0,
-      };
-    }
-  },
 })
 
 router.beforeEach(async (to, from, next) => {

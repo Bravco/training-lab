@@ -14,10 +14,6 @@
         white-space: nowrap;
     }
 
-    .logo:hover {
-        filter: opacity(100%);
-    }
-
     .logo span {
         color: var(--color-text);
         font-family: var(--font-family-outfit);

@@ -101,12 +101,12 @@
             }
             
             createUserWithEmailAndPassword(getAuth(), state.email, state.password).then(() => {
-                router.push("/");
-                
                 setDoc(userDoc, {
                     "id": getAuth().currentUser.uid,
                     "email": getAuth().currentUser.email,
                 });
+
+                router.push("/app");
             }).catch((error) => {
                 switch (error.code) {
                     case "auth/email-already-in-use":
