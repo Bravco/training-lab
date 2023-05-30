@@ -9,6 +9,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 // Page
 import 'package:app/page/auth/auth.dart';
+import 'package:app/page/plans.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -58,10 +59,11 @@ class _MainPageState extends State<MainPage> {
           } else if (snapshot.hasError) {
             return Text("Something went wrong! ${snapshot.error}");
           } else if (snapshot.hasData) {
-            return Center(
-              child: ElevatedButton(
-                child: const Text("Logout"),
+            return Scaffold(
+              body: const PlansPage(),
+              floatingActionButton: FloatingActionButton(
                 onPressed: () => FirebaseAuth.instance.signOut(),
+                child: const Icon(Icons.logout),
               ),
             );
           } else {
