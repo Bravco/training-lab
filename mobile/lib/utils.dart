@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+// Model
+import 'package:app/model/plan.dart';
+
 class Utils {
   static final navigatorKey = GlobalKey<NavigatorState>();
   static final messengerKey = GlobalKey<ScaffoldMessengerState>();
@@ -166,4 +169,26 @@ class Utils {
     fontWeight: fontWeight,
     letterSpacing: .1,
   );
+
+  static int totalPlanVolume(Plan plan) {
+    int totalVolume = 0;
+    if (plan.days != null) {
+      for (var day in plan.days!) {
+        final workouts = day["workouts"];
+        if (workouts != null) {
+          workouts.forEach((workout) => totalVolume += totalWorkoutVolume(workout));
+        }
+      }
+    }
+    return totalVolume;
+  }
+
+  static int totalWorkoutVolume(workout) {
+    int totalVolume = 0;
+    final exercises = workout["exercises"];
+    if (exercises != null) {
+      exercises.forEach((exercise) => totalVolume += exercise["volume"] as int);
+    }
+    return totalVolume;
+  }
 }

@@ -14,4 +14,8 @@ class DatabaseService {
   static CollectionReference plansCollection() {
     return userDoc().collection("plans");
   }
+
+  static DocumentReference planDoc(String planId) {
+    return plansCollection().doc(planId);
+  }
 }
