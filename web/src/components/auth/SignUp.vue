@@ -106,7 +106,7 @@
                     "email": getAuth().currentUser.email,
                 });
 
-                router.push("/app");
+                router.push("/");
             }).catch((error) => {
                 switch (error.code) {
                     case "auth/email-already-in-use":
