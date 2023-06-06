@@ -1,9 +1,10 @@
 <template>
-  <Navbar/>
-  <section id="hero">
-  </section>
+    <hero v-if="getAuth().currentUser == null"/>
+    <App v-else/>
 </template>
 
 <script setup>
-  import Navbar from "../components/Navbar.vue";
+    import { getAuth } from 'firebase/auth';
+    import Hero from './Hero.vue';
+    import App from './App.vue';
 </script>
