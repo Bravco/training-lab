@@ -1,5 +1,5 @@
 <template>
-    <hero v-if="getAuth().currentUser == null"/>
+    <Hero v-if="getAuth().currentUser == null"/>
     <App v-else/>
 </template>
 
