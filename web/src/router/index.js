@@ -25,13 +25,10 @@ const router = createRouter({
 })
 
 router.beforeEach(async (to, from, next) => {
-  const requiresNoUser = to.matched.some((record) => record.meta.requiresNoUser);
-  const requiresAuth = to.matched.some((record) => record.meta.requiresAuth);
   const currentUser = await getCurrentUser();
+  const requiresNoUser = to.matched.some((record) => record.meta.requiresNoUser);
 
-  if (requiresAuth && !currentUser) {
-    next("/auth");
-  } else if (requiresNoUser && currentUser) {
+  if (requiresNoUser && currentUser) {
     next("/");
   } else {
     next();
