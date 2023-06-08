@@ -1,6 +1,6 @@
 # Training Lab
 
-An application to help you create your own custom workout plans.
+An application which helps you to cater your needs about constructing and maintaining fully-customizable workout plan.
 
 ### Try it yourself
 
