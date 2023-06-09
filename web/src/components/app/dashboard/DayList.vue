@@ -19,22 +19,37 @@
                             </div>
                         </li>
                         <hr>
-                        <li v-for="exercise in workout.exercises" :key="exercise" class="exercise-item">
-                            <p 
-                                class="contenteditable exercise-title" 
-                                role="textbox" 
-                                spellcheck="false" 
-                                @input="(e) => { exercise.title = e.target.innerText; }" 
-                                contenteditable>
-                            {{ exercise.title }}</p>
-                            <div class="right">
-                                <input v-model="exercise.volume" class="volume" type="number" min="1" max="99">
-                                <IconButton :on-click="() => deleteExercise(dayIndex, workoutIndex, exercise)" icon="fa-minus" background-color-var="color30"/>
-                            </div>
-                        </li>
-                        <li class="exercise-item">
-                            <IconButton :on-click="() => addExercise(dayIndex, workoutIndex)" icon="fa-plus" background-color-var="color30"/>
-                        </li>
+                        <draggable 
+                            v-model="workout.exercises" 
+                            group="exercises" 
+                            tag="transition-group"
+                            drag-class="drag"
+                            ghost-class="ghost"
+                        >
+                            <template #item="{ element: exercise }">
+                                <li>
+                                    <div class="exercise-item draggable-exercise-item">
+                                        <font-awesome-icon class="grip" icon="fa-solid fa-grip-lines-vertical"/>
+                                        <p 
+                                            class="contenteditable exercise-title" 
+                                            role="textbox" 
+                                            spellcheck="false" 
+                                            @input="(e) => { exercise.title = e.target.innerText; }" 
+                                            contenteditable>
+                                        {{ exercise.title }}</p>
+                                        <div class="right">
+                                            <input v-model="exercise.volume" class="volume" type="number" min="1" max="99">
+                                            <IconButton :on-click="() => deleteExercise(dayIndex, workoutIndex, exercise)" icon="fa-minus" background-color-var="color60"/>
+                                        </div>
+                                    </div>
+                                </li>
+                            </template>
+                            <template #footer>
+                                <div class="exercise-item add-exercise-btn">
+                                    <IconButton :on-click="() => addExercise(dayIndex, workoutIndex)" icon="fa-plus" background-color-var="color30"/>
+                                </div>
+                            </template>
+                        </draggable>
                     </ul>
                 </li>
             </ul>
@@ -55,6 +70,7 @@
     import { onSnapshot, setDoc } from 'firebase/firestore';
     import { planDoc } from '../../../firebase';
     import IconButton from '../../IconButton.vue';
+    import draggable from "vuedraggable";
 
     const props = defineProps({
         planId: {
@@ -195,15 +211,34 @@
 
     .exercise-item {
         display: grid;
-        grid-template-columns: 10rem 1fr;
+        grid-template-columns: 12.5rem 1fr;
         gap: 2rem;
         align-items: center;
         padding: .75rem 1rem;
     }
 
-    .exercise-item:last-child {
+    .draggable-exercise-item {
+        grid-template-columns: 8px 10rem 1fr;
+        margin: 1rem 0;
+        background-color: var(--color-30);
+        border-radius: 1rem;
+    }
+
+    .drag > div {
+        transform: rotate(5deg);
+    }
+
+    .ghost > div {
+        visibility: hidden;
+    }
+
+    .add-exercise-btn {
         grid-template-columns: 1fr;
         place-items: center;
+    }
+
+    .grip {
+        color: var(--color-text-alt);
     }
 
     .right {

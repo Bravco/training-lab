@@ -6,9 +6,9 @@ import { VueFire, VueFireAuth } from "vuefire";
 
 import {FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faUser, faCircleUser, faDumbbell, faMoon, faMoneyBillWave, faSignOutAlt, faEye, faEyeSlash, faCube, faCalendarDay, faBolt, faAngleRight, faPlus, faMinus, faXmark, faSave, faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { faUser, faCircleUser, faDumbbell, faMoon, faMoneyBillWave, faSignOutAlt, faEye, faEyeSlash, faCube, faCalendarDay, faBolt, faAngleRight, faPlus, faMinus, faXmark, faSave, faTrashCan, faGripLinesVertical } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faUser, faCircleUser, faDumbbell, faMoon, faMoneyBillWave, faSignOutAlt, faEye, faEyeSlash, faCube, faCalendarDay, faBolt, faAngleRight, faPlus, faMinus, faXmark, faSave, faTrashCan);
+library.add(faUser, faCircleUser, faDumbbell, faMoon, faMoneyBillWave, faSignOutAlt, faEye, faEyeSlash, faCube, faCalendarDay, faBolt, faAngleRight, faPlus, faMinus, faXmark, faSave, faTrashCan, faGripLinesVertical);
 
 const app = createApp(App);
 
