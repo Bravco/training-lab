@@ -53,6 +53,7 @@
 
     function clearSelectedPlan() {
         selectedPlanId.value = null;
+        selectedPlanTitle.value = null;
     }
 
     function totalPlanVolume(plan) {
