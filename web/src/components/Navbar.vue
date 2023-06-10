@@ -26,7 +26,6 @@
         align-items: center;
         width: 100%;
         padding: 2.85rem 5%;
-        backdrop-filter: blur(1rem);
         transition: background-color 300ms;
         z-index: 100;
     }
