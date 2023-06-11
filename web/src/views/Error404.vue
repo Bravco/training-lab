@@ -1,22 +1,13 @@
 <template>
+    <Navbar/>
     <section id="error">
         <div>
-            <h1>Error <span>404</span></h1>
-            <p>Page does not exist.</p>
+            <h1 class="content-header">Error 404</h1>
+            <p class="content-paragraph-alt">Page does not exist.</p>
         </div>
     </section>
 </template>
 
-<style scoped>
-    h1 {
-        font-size: 3rem;
-    }
-
-    h1 span {
-        color: var(--color-primary);
-    }
-
-    p {
-        color: var(--color-text-alt);
-    }
-</style>
+<script setup>
+  import Navbar from "../components/Navbar.vue";
+</script>
