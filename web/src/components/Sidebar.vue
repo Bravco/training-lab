@@ -96,6 +96,7 @@
     }
 
     .nav {
+        min-height: 100%;
         height: 100vh;
         width: 6rem;
         position: fixed;

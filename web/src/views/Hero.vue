@@ -4,9 +4,9 @@
     <div class="background"></div>
     <div class="content">
       <div class="text">
-        <h1 class="header">Personal Workout Architect</h1>
-        <p class="description">
-          We help you to craft customized routines tailored to your goals.<br>
+        <h1 class="content-header">Personal Workout Architect</h1>
+        <p class="content-paragraph-alt">
+          We help you to craft customized routines tailored to your goals. 
           Only then you can unleash your true fitness potential.
         </p>
       </div>
@@ -35,6 +35,7 @@
     position: absolute;
     background-image: url("../img/hero.jpg");
     background-repeat: no-repeat;
+    background-position: center;
     background-size: cover;
     filter: brightness(35%);
     z-index: -100;
@@ -51,20 +52,6 @@
     gap: .5rem;
   }
 
-  .header {
-    color: var(--color-primary);
-    font-size: 3.75em;
-    font-weight: 700;
-  }
-
-  .description {
-    color: var(--color-text-alt);
-    font-size: 1.25em;
-    font-weight: 400;
-    line-height: 1.75rem;
-    letter-spacing: .5px;
-  }
-
   .cta {
     display: flex;
     gap: 2rem;
@@ -74,7 +61,6 @@
     display: flex;
     gap: 1rem;
     align-items: center;
-    width: fit-content;
     padding: .75rem 1.25rem;
     border-radius: 2rem;
     letter-spacing: 1px;
