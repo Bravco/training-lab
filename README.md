@@ -1,6 +1,6 @@
 # Training Lab
 
-An application which helps you to cater your needs about constructing and maintaining fully-customizable workout plan.
+**Training Lab** helps you to cater your needs about constructing and maintaining fully-customizable workout plan and healthy body.
 
 ![Image](web/src/img/hero.jpg)
 
