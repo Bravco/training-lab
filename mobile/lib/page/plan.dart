@@ -80,9 +80,12 @@ class PlanPage extends StatelessWidget {
                                         child: Row(
                                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                           children: [
-                                            Text(
-                                              exercise["title"],
-                                              style: Utils.h4TextStyle(fontWeight: FontWeight.normal),
+                                            Expanded(
+                                              child: Text(
+                                                exercise["title"],
+                                                style: Utils.h4TextStyle(fontWeight: FontWeight.normal),
+                                                softWrap: true,
+                                              ),
                                             ),
                                             Text(
                                               exercise["volume"].toString(),
